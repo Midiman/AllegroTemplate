@@ -67,11 +67,21 @@ void SectionManager::Change(std::string name)
 {
     std::cout << "[SectionManager] Changing section: " << name << std::endl;
 
+    if (fCurrentSection != NULL)
+    {
+        fCurrentSection->SwitchOut();
+    }
+
     fCurrentSection = fSections[name];
 
     if (fCurrentSection == NULL)
     {
         std::cout << "[SectionManager] Section doesn't exist" << std::endl;
+    }
+
+    if (fCurrentSection != NULL)
+    {
+        fCurrentSection->SwitchIn();
     }
 }
 

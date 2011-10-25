@@ -82,8 +82,6 @@ bool Game::InitData()
     fFontManager->LoadFrom("data/fonts");
 
     fSectionManager = new SectionManager();
-    //fSectionManager->Add("main", new Section(this));
-    //fSectionManager->Change("main");
 
     return true;
 }
