@@ -31,7 +31,7 @@ TextureManager::TextureManager()
 {
     std::cout << "[TextureManager] Initialising..." << std::endl;
 
-    al_init_image_addon();
+    fWorking = al_init_image_addon();
 }
 
 TextureManager::~TextureManager()
@@ -85,9 +85,12 @@ void TextureManager::DataWalk(std::string fullParent, std::string niceParent)
 
 void TextureManager::LoadFrom(std::string path)
 {
-    std::cout << "[TextureManager] Loading textures from: " << path << std::endl;
+    if (fWorking)
+    {
+        std::cout << "[TextureManager] Loading textures from: " << path << std::endl;
 
-    DataWalk(path, "");
+        DataWalk(path, "");
+    }
 }
 
 Texture *TextureManager::Get(std::string name)

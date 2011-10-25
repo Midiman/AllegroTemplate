@@ -39,7 +39,8 @@ FontManager::FontManager()
     std::cout << "[FontManager] Initialising..." << std::endl;
 
     al_init_font_addon();
-    al_init_ttf_addon();
+
+    fWorking = al_init_ttf_addon();
 }
 
 FontManager::~FontManager()
@@ -93,9 +94,12 @@ void FontManager::DataWalk(std::string fullParent, std::string niceParent)
 
 void FontManager::LoadFrom(std::string path)
 {
-    std::cout << "[FontManager] Loading fonts from: " << path << std::endl;
+    if (fWorking)
+    {
+        std::cout << "[FontManager] Loading fonts from: " << path << std::endl;
 
-    DataWalk(path, "");
+        DataWalk(path, "");
+    }
 }
 
 Font *FontManager::Get(std::string name)

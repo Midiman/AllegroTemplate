@@ -30,6 +30,7 @@ class FontManager
 
     private:
         std::map<std::string, Font *> fFonts;
+        bool fWorking;
 };
 
 #endif // _FONTMANAGER_HPP_

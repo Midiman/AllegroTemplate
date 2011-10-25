@@ -29,6 +29,7 @@ class TextureManager
 
     private:
         std::map<std::string, Texture *> fTextures;
+        bool fWorking;
 };
 
 #endif // _TEXTUREMANAGER_HPP_

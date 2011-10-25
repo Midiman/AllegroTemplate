@@ -44,11 +44,19 @@ void Section::SwitchOut()
 SectionManager::SectionManager()
 {
     std::cout << "[SectionManager] Initialising..." << std::endl;
+
+    fCurrentSection = NULL;
 }
 
 SectionManager::~SectionManager()
 {
     std::cout << "[SectionManager] Deinitialising..." << std::endl;
+
+    std::map<std::string, Section *>::const_iterator it;
+    for (it = fSections.begin(); it != fSections.end(); ++it)
+    {
+        delete it->second;
+    }
 }
 
 void SectionManager::Add(std::string name, Section *section)

@@ -7,6 +7,7 @@ struct ALLEGRO_EVENT_QUEUE;
 class SectionManager;
 class TextureManager;
 class FontManager;
+class AudioManager;
 
 class Game
 {
@@ -34,6 +35,7 @@ class Game
         SectionManager *fSectionManager;
         TextureManager *fTextureManager;
         FontManager *fFontManager;
+        AudioManager *fAudioManager;
 };
 
 #endif // _GAME_HPP_
