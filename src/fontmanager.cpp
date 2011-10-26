@@ -112,7 +112,7 @@ Font *FontManager::Get(std::string name)
     return fFonts[name];
 }
 
-void FontManager::Draw(std::string name, int size, float x, float y, ALLEGRO_COLOR colour, std::string text)
+void FontManager::Draw(std::string name, int size, float x, float y, ALLEGRO_COLOR colour, std::string text, FontAlign align)
 {
     Font *font = fFonts[name];
     if (font != NULL)
@@ -120,7 +120,18 @@ void FontManager::Draw(std::string name, int size, float x, float y, ALLEGRO_COL
         ALLEGRO_FONT *f = font->GetFont(size);
         if (f != NULL)
         {
-            al_draw_text(f, colour, x, y, 0, text.c_str());
+            if (align == FontAlignLeft)
+            {
+                al_draw_text(f, colour, x, y, ALLEGRO_ALIGN_LEFT, text.c_str());
+            }
+            else if (align == FontAlignMiddle)
+            {
+                al_draw_text(f, colour, x, y, ALLEGRO_ALIGN_CENTRE, text.c_str());
+            }
+            else if (align == FontAlignRight)
+            {
+                al_draw_text(f, colour, x, y, ALLEGRO_ALIGN_RIGHT, text.c_str());
+            }
         }
     }
 }

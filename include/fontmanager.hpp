@@ -4,6 +4,13 @@
 struct ALLEGRO_FONT;
 struct ALLEGRO_COLOR;
 
+enum FontAlign
+{
+    FontAlignMiddle,
+    FontAlignLeft,
+    FontAlignRight
+};
+
 class Font
 {
     public:
@@ -26,7 +33,7 @@ class FontManager
         void LoadFrom(std::string path);
 
         Font *Get(std::string name);
-        void Draw(std::string name, int size, float x, float y, ALLEGRO_COLOR colour, std::string text);
+        void Draw(std::string name, int size, float x, float y, ALLEGRO_COLOR colour, std::string text, FontAlign align = FontAlignLeft);
 
     private:
         std::map<std::string, Font *> fFonts;
