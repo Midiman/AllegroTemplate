@@ -26,6 +26,7 @@ Game::Game(int argc, char *argv[])
     fHeight = 600;
 
     fRunning = true;
+    fRedraw = true;
 }
 
 Game::~Game()
@@ -70,17 +71,17 @@ bool Game::InitAllegro()
     al_register_event_source(fEventQueue, al_get_keyboard_event_source());
     al_register_event_source(fEventQueue, al_get_mouse_event_source());
 
+    fTimer = al_create_timer(1.0 / 60.0);
+    al_register_event_source(fEventQueue, al_get_timer_event_source(fTimer));
+
     return true;
 }
 
 bool Game::InitData()
 {
     fTextureManager = new TextureManager();
-
     fFontManager = new FontManager();
-
     fAudioManager = new AudioManager();
-
     fSectionManager = new SectionManager();
 
     return true;
@@ -92,7 +93,12 @@ void Game::Run()
     {
         CheckEvents();
         Update();
-        Draw();
+
+        if (fRedraw)
+        {
+            fRedraw = false;
+            Draw();
+        }
 
         al_flip_display();
     }
@@ -107,6 +113,10 @@ void Game::CheckEvents()
         {
             case ALLEGRO_EVENT_DISPLAY_CLOSE:
                 fRunning = false;
+                break;
+
+            case ALLEGRO_EVENT_TIMER:
+                fRedraw = true;
                 break;
         }
 

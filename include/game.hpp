@@ -3,6 +3,7 @@
 
 struct ALLEGRO_DISPLAY;
 struct ALLEGRO_EVENT_QUEUE;
+struct ALLEGRO_TIMER;
 
 class SectionManager;
 class TextureManager;
@@ -28,9 +29,10 @@ class Game
 
     private:
         int fWidth, fHeight;
-        bool fRunning;
+        bool fRunning, fRedraw;
         ALLEGRO_DISPLAY *fDisplay;
         ALLEGRO_EVENT_QUEUE *fEventQueue;
+        ALLEGRO_TIMER *fTimer;
 
         SectionManager *fSectionManager;
         TextureManager *fTextureManager;
