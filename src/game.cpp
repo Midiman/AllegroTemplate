@@ -146,3 +146,18 @@ void Game::End()
     al_destroy_event_queue(fEventQueue);
     al_destroy_display(fDisplay);
 }
+
+FontManager *Game::GetFontManager()
+{
+    return fFontManager;
+}
+
+TextureManager *Game::GetTextureManager()
+{
+    return fTextureManager;
+}
+
+AudioManager *Game::GetAudioManager()
+{
+    return fAudioManager;
+}

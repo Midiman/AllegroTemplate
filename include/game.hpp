@@ -27,6 +27,10 @@ class Game
 
         void End();
 
+        FontManager *GetFontManager();
+        TextureManager *GetTextureManager();
+        AudioManager *GetAudioManager();
+
     private:
         int fWidth, fHeight;
         bool fRunning, fRedraw;
