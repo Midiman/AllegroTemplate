@@ -147,6 +147,26 @@ void Game::End()
     al_destroy_display(fDisplay);
 }
 
+int Game::GetWidth()
+{
+    return fWidth;
+}
+
+int Game::GetHeight()
+{
+    return fHeight;
+}
+
+int Game::GetHalfWidth()
+{
+    return fWidth / 2;
+}
+
+int Game::GetHalfHeight()
+{
+    return fHeight / 2;
+}
+
 FontManager *Game::GetFontManager()
 {
     return fFontManager;

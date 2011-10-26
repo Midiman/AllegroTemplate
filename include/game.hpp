@@ -26,6 +26,11 @@ class Game
         void Draw();
 
         void End();
+        
+        int GetWidth();
+        int GetHeight();
+        int GetHalfWidth();
+        int GetHalfHeight();
 
         FontManager *GetFontManager();
         TextureManager *GetTextureManager();
