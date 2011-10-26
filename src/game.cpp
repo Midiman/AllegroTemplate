@@ -74,6 +74,8 @@ bool Game::InitAllegro()
     fTimer = al_create_timer(1.0 / 60.0);
     al_register_event_source(fEventQueue, al_get_timer_event_source(fTimer));
 
+    al_start_timer(fTimer);
+
     return true;
 }
 
