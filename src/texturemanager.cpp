@@ -32,6 +32,11 @@ TextureManager::TextureManager()
     std::cout << "[TextureManager] Initialising..." << std::endl;
 
     fWorking = al_init_image_addon();
+
+    if (!fWorking)
+    {
+        std::cout << "[TextureManager] Warning: Failed to initialise corrrectly..." << std::endl;
+    }
 }
 
 TextureManager::~TextureManager()

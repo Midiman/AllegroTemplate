@@ -41,6 +41,11 @@ FontManager::FontManager()
     al_init_font_addon();
 
     fWorking = al_init_ttf_addon();
+
+    if (!fWorking)
+    {
+        std::cout << "[FontManager] Warning: Failed to initialise corrrectly..." << std::endl;
+    }
 }
 
 FontManager::~FontManager()

@@ -6,9 +6,10 @@
 #include "sectionmanager.hpp"
 #include "texturemanager.hpp"
 #include "fontmanager.hpp"
+#include "audiomanager.hpp"
 #include "game.hpp"
 
-static void sAssertHandler(const char *expr, const char *file, int line, const char *func)
+/*static void sAssertHandler(const char *expr, const char *file, int line, const char *func)
 {
     std::cout << "Crashed :/" << std::endl;
     std::cout << " Expression: " << expr << std::endl;
@@ -17,7 +18,7 @@ static void sAssertHandler(const char *expr, const char *file, int line, const c
     std::cout << " Function: " << func << std::endl;
 
     exit(1);
-}
+}*/
 
 Game::Game(int argc, char *argv[])
 {
@@ -46,7 +47,8 @@ bool Game::InitAllegro()
 {
     std::cout << "[Allegro] Initialising..." << std::endl;
 
-    al_register_assert_handler(sAssertHandler);
+    // Re-enable with when Allegro 5.1 is released
+    //al_register_assert_handler(sAssertHandler);
 
     if (!al_init())
     {
@@ -59,8 +61,6 @@ bool Game::InitAllegro()
 
     al_set_new_display_flags(ALLEGRO_OPENGL);
     fDisplay = al_create_display(fWidth, fHeight);
-    if (!fDisplay)
-        return false;
 
     al_install_keyboard();
     al_install_mouse();
@@ -76,8 +76,13 @@ bool Game::InitAllegro()
 bool Game::InitData()
 {
     fTextureManager = new TextureManager();
+    //fTextureManager->LoadFrom("data/textures");
 
     fFontManager = new FontManager();
+    //fFontManager->LoadFrom("data/fonts");
+
+    fAudioManager = new AudioManager();
+    //fAudioManager->LoadSoundsFrom("data/sounds");
 
     fSectionManager = new SectionManager();
 
@@ -125,8 +130,9 @@ void Game::Draw()
 void Game::End()
 {
     delete fSectionManager;
-    delete fTextureManager;
+    delete fAudioManager;
     delete fFontManager;
+    delete fTextureManager;
 
     std::cout << "[Allegro] Deinitialising..." << std::endl;
 
