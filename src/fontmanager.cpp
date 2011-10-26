@@ -9,7 +9,7 @@
 
 #include "fontmanager.hpp"
 
-Font::Font(std::string filename)
+FontManager::Font::Font(std::string filename)
 {
     for (int i = 6; i < 180; i++)
     {
@@ -17,7 +17,7 @@ Font::Font(std::string filename)
     }
 }
 
-Font::~Font()
+FontManager::Font::~Font()
 {
     for (int i = 6; i < 180; i++)
     {
@@ -29,7 +29,7 @@ Font::~Font()
     }
 }
 
-ALLEGRO_FONT *Font::GetFont(int size)
+ALLEGRO_FONT *FontManager::Font::GetFont(int size)
 {
     return fFonts[size];
 }
@@ -107,7 +107,7 @@ void FontManager::LoadFrom(std::string path)
     }
 }
 
-Font *FontManager::Get(std::string name)
+FontManager::Font *FontManager::Get(std::string name)
 {
     return fFonts[name];
 }

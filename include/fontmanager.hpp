@@ -4,28 +4,28 @@
 struct ALLEGRO_FONT;
 struct ALLEGRO_COLOR;
 
-enum FontAlign
-{
-    FontAlignMiddle,
-    FontAlignLeft,
-    FontAlignRight
-};
-
-class Font
-{
-    public:
-        Font(std::string filename);
-        ~Font();
-
-        ALLEGRO_FONT *GetFont(int size);
-
-    private:
-        ALLEGRO_FONT *fFonts[200];
-};
-
 class FontManager
 {
     public:
+        enum FontAlign
+        {
+            FontAlignMiddle,
+            FontAlignLeft,
+            FontAlignRight
+        };
+
+        class Font
+        {
+            public:
+                Font(std::string filename);
+                ~Font();
+
+                ALLEGRO_FONT *GetFont(int size);
+
+            private:
+                ALLEGRO_FONT *fFonts[200];
+        };
+        
         FontManager();
         ~FontManager();
 
