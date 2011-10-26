@@ -76,13 +76,10 @@ bool Game::InitAllegro()
 bool Game::InitData()
 {
     fTextureManager = new TextureManager();
-    //fTextureManager->LoadFrom("data/textures");
 
     fFontManager = new FontManager();
-    //fFontManager->LoadFrom("data/fonts");
 
     fAudioManager = new AudioManager();
-    //fAudioManager->LoadSoundsFrom("data/sounds");
 
     fSectionManager = new SectionManager();
 

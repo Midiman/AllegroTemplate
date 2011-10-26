@@ -10,6 +10,10 @@ Manages all your textures for you. All you need to do is give it a directory and
 
 Similar to the TextureManager but manages fonts...
 
+## AudioManager
+
+Similar to the TextureManager but manages music and sounds...
+
 ## SectionManager
 
 Similar to the TextureManager but manages sections...
