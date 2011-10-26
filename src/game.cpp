@@ -169,14 +169,19 @@ int Game::GetHalfHeight()
     return fHeight / 2;
 }
 
-FontManager *Game::GetFontManager()
+SectionManager *Game::GetSectionManager()
 {
-    return fFontManager;
+    return fSectionManager;
 }
 
 TextureManager *Game::GetTextureManager()
 {
     return fTextureManager;
+}
+
+FontManager *Game::GetFontManager()
+{
+    return fFontManager;
 }
 
 AudioManager *Game::GetAudioManager()

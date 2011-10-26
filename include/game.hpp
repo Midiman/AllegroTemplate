@@ -32,8 +32,9 @@ class Game
         int GetHalfWidth();
         int GetHalfHeight();
 
-        FontManager *GetFontManager();
+        SectionManager *GetSectionManager();
         TextureManager *GetTextureManager();
+        FontManager *GetFontManager();
         AudioManager *GetAudioManager();
 
     private:
