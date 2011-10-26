@@ -135,3 +135,26 @@ void FontManager::Draw(std::string name, int size, float x, float y, ALLEGRO_COL
         }
     }
 }
+
+ALLEGRO_BITMAP *FontManager::DrawBitmap(std::string name, int size, ALLEGRO_COLOR colour, std::string text)
+{
+    Font *font = fFonts[name];
+    if (font != NULL)
+    {
+        ALLEGRO_FONT *f = font->GetFont(size);
+        if (f != NULL)
+        {
+            int w = al_get_text_width(f, text.c_str());
+            int h = al_get_font_line_height(f);
+
+            ALLEGRO_BITMAP *bmp = al_create_bitmap(w, h);
+            al_set_target_bitmap(bmp);
+            al_draw_text(f, colour, 0, 0, 0, text.c_str());
+            al_set_target_backbuffer(al_get_current_display());
+
+            return bmp;
+        }
+    }
+
+    return NULL;
+}

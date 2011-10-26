@@ -1,6 +1,7 @@
 #ifndef _FONTMANAGER_HPP_
 #define _FONTMANAGER_HPP_
 
+struct ALLEGRO_BITMAP;
 struct ALLEGRO_FONT;
 struct ALLEGRO_COLOR;
 
@@ -25,7 +26,7 @@ class FontManager
             private:
                 ALLEGRO_FONT *fFonts[200];
         };
-        
+
         FontManager();
         ~FontManager();
 
@@ -34,6 +35,7 @@ class FontManager
 
         Font *Get(std::string name);
         void Draw(std::string name, int size, float x, float y, ALLEGRO_COLOR colour, std::string text, FontAlign align = FontAlignLeft);
+        ALLEGRO_BITMAP *DrawBitmap(std::string name, int size, ALLEGRO_COLOR colour, std::string text);
 
     private:
         std::map<std::string, Font *> fFonts;
